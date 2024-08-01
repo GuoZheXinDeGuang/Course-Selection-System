@@ -1,2 +1,2 @@
 This file contains the code of our project, including GUIs, helper classes and main classes.
-Some mock datasets are also included.
+Some mock datasets of students and admins are also included.
