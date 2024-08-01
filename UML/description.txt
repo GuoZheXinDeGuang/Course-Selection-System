@@ -1,0 +1,2 @@
+This file contains the image of the usecase diagrams, sequence diagrams and class diagram. 
+Also, it contains a pdf file combining all the diagrams. 
