@@ -72,9 +72,9 @@ public class Course {
     public void setRating(double rating) {
         this.rating = rating;
     }
-
-    @Override
+    
     public String toString() {
+        // This will print the course
         return courseName + " (" + courseInstructor + ")";
     }
 }
