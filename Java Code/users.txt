@@ -1,0 +1,2 @@
+student1,password1,false
+admin1,password2,true
