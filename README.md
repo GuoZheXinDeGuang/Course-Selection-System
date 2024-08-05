@@ -27,7 +27,7 @@ To use this system, follow these steps:
 ### Student
 - **Course Selection:** Add courses to the shopping cart.
 - **View Cart:** View and manage selected courses.
-- **Schedule Validation:** Validate the schedule for time conflicts.
+- **Schedule Validation:** Validate the schedule for time conflicts. The time we set up is just in one day. 
 - **Rate Courses:** Rate completed courses.
 
 ### Admin
