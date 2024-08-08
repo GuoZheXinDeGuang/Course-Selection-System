@@ -14,7 +14,7 @@ To use this system, follow these steps:
    - Clone the repository to your local machine using `git clone https://github.com/GuoZheXinDeGuang/Course-Selection-System`.
 
 2. **Add Files to Compiler:**
-   - Add all the `.java` files and `users.txt` to your Java compiler or IDE.
+   - Add all the `.java` files and `users.txt` to your Java compiler or IDE. `users.txt` contains the username and password of student and admin. 
 
 3. **Run the Application:**
    - Compile and run the `LoginGUI.java` file to start the application.
