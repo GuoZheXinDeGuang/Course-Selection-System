@@ -17,7 +17,7 @@ To use this system, follow these steps:
    - Add all the `.java` files and `users.txt` to your Java compiler or IDE. `users.txt` contains the username and password of student and admin. 
 
 3. **Run the Application:**
-   - Compile and run the `LoginGUI.java` file to start the application.
+   - Compile and run the `Main.java` file to start the application.
 
 4. **User Authentication:**
    - The usernames and passwords are stored in `users.txt`. Use these credentials to log in as a student or an admin.
