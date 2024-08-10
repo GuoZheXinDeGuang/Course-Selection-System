@@ -34,3 +34,6 @@ To use this system, follow these steps:
 - **Add Course:** Add new courses to the system.
 - **Update Course:** Update existing course information.
 - **Remove Course:** Remove courses from the system.
+
+## Replit Link
+- You can directly run the project using this link: [https://replit.com/@zl4701/CS470-Project-Course-Selection]
