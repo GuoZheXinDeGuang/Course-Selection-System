@@ -45,8 +45,8 @@ public class RateCourseGUI extends JFrame {
     }
 
     private void loadCompletedCourses() {
-        if (CourseManagementSystem.getLoggedInUser() instanceof Student) {
-            Student student = (Student) CourseManagementSystem.getLoggedInUser();
+        if (UserManagementSystem.getLoggedInUser() instanceof Student) {
+            Student student = (Student) UserManagementSystem.getLoggedInUser();
             loadComboBox(student);
         }
     }
