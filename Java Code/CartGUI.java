@@ -110,6 +110,7 @@ public class CartGUI extends JFrame {
             CourseManagementSystem.removeCourseFromCart(selectedCourse);
             tableModel.removeRow(selectedRow);
             getTotalCredits();
+            JOptionPane.showMessageDialog(null, "Course removed from cart!");
         } else {
             JOptionPane.showMessageDialog(null, "Please select a course to delete.");
         }
