@@ -1,18 +1,13 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.swing.JOptionPane;
 
-public class CourseManagementSystem  {
+public class CourseManagementSystem {
     private static List<Course> cart = new ArrayList<Course>();
     private static List<Course> allCourses = new ArrayList<Course>();
     private static final String COURSE_FILE = "courses.bin";
     private static final String CART_FILE = "cart.bin";
-    private static User loggedInUser = null;
-    private static Map<String, User> users = new HashMap<String, User>();
-    private static List<Course> completedCourses = new ArrayList<Course>();
 
     static {
         loadCourses();
@@ -72,6 +67,7 @@ public class CourseManagementSystem  {
         if (course.getPrerequisites().isEmpty()) {
             return true;
         }
+        User loggedInUser = UserManagementSystem.getLoggedInUser();
         if (loggedInUser instanceof Student) {
             Student student = (Student) loggedInUser;
             for (Course completedCourse : student.getCompletedCourses()) {
@@ -93,25 +89,12 @@ public class CourseManagementSystem  {
     }
 
     public static boolean hasCompletedCourse(Course course) {
+        User loggedInUser = UserManagementSystem.getLoggedInUser();
         if (loggedInUser instanceof Student) {
             Student student = (Student) loggedInUser;
             return student.hasCompletedCourse(course.getCourseName());
         }
         return false;
-    }
-
-    public static void loginUser(User user) {
-        loggedInUser = user;
-        loadCart();
-    }
-
-    public static void logoutUser() {
-        saveCart();
-        loggedInUser = null;
-    }
-
-    public static User getLoggedInUser() {
-        return loggedInUser;
     }
 
     @SuppressWarnings("unchecked")
@@ -138,7 +121,8 @@ public class CourseManagementSystem  {
     }
 
     @SuppressWarnings("unchecked")
-    private static void loadCart() {
+    public static void loadCart() {
+        User loggedInUser = UserManagementSystem.getLoggedInUser();
         if (loggedInUser instanceof Student) {
             ObjectInputStream ois = null;
             try {
@@ -162,7 +146,8 @@ public class CourseManagementSystem  {
         }
     }
 
-    private static void saveCart() {
+    public static void saveCart() {
+        User loggedInUser = UserManagementSystem.getLoggedInUser();
         if (loggedInUser instanceof Student) {
             ObjectOutputStream oos = null;
             try {
@@ -258,42 +243,6 @@ public class CourseManagementSystem  {
         return results;
     }
 
-    private static void createStudentWithCompletedCourses(String userData) {
-        String[] parts = userData.split(",");
-        String username = parts[0];
-        String password = parts[1];
-        completedCourses.add(
-                new Course("Intro to CS", "10:00-11:00", "Prof. A", "Introduction to Computer Science", "", 3, -1,
-                        "Computer Science"));
-        completedCourses.add(new Course("Data Structures", "11:00-12:00", "Prof. B", "Introduction to Data Structures",
-                "Intro to CS", 3, -1, "Computer Science"));
-        completedCourses.add(new Course("Calculus I", "09:00-10:00", "Prof. E", "Introduction to Calculus", "", 3, -1,
-                "Mathematics"));
-        completedCourses.add(new Course("Calculus II", "10:00-11:00", "Prof. F", "Advanced Calculus", "Calculus I", 3,
-                -1, "Mathematics"));
-
-        Student student = new Student(username, password);
-        for (Course course : completedCourses) {
-            student.addCompletedCourse(course);
-        }
-        users.put(username, student);
-    }
-
-    private static void createAdmin(String userData) {
-        String[] parts = userData.split(",");
-        String username = parts[0];
-        String password = parts[1];
-        users.put(username, new Admin(username, password));
-    }
-
-    public static void addUser(User user) {
-        users.put(user.getUsername(), user);
-    }
-
-    public static Map<String, User> getUsers() {
-        return new HashMap<String, User>(users);
-    }
-
     public static void rateCourse(Course course, double rating) {
         for (int i = 0; i < allCourses.size(); i++) {
             Course c = allCourses.get(i);
@@ -321,45 +270,5 @@ public class CourseManagementSystem  {
         course.setCategory(category);
         saveCourses();
     }
-
-    public static void loadUsers(String filePath) {
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(new FileReader(filePath));
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length == 3) {
-                    boolean isAdmin = Boolean.parseBoolean(parts[2]);
-                    if (isAdmin) {
-                        createAdmin(line);
-                    } else {
-                        createStudentWithCompletedCourses(line);
-                    }
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (br != null)
-                    br.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
-
-    public static boolean authenticateUser(String username, String password, boolean isAdmin) {
-        if (!users.containsKey(username)) {
-            return false;
-        }
-        User user = users.get(username);
-        if (user.getPassword().equals(password)
-                && ((isAdmin && user instanceof Admin) || (!isAdmin && user instanceof Student))) {
-            loginUser(user);
-            return true;
-        }
-        return false;
-    }
 }
+
