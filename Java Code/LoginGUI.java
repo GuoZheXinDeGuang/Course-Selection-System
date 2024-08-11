@@ -77,11 +77,11 @@ public class LoginGUI extends JFrame {
             }
         });
 
-        CourseManagementSystem.loadUsers(filePath);
+        UserManagementSystem.loadUsers(filePath);
     }
 
     private void authenticateStudent(String username, String password) {
-        if (CourseManagementSystem.authenticateUser(username, password, false)) {
+        if (UserManagementSystem.authenticateUser(username, password, false)) {
             new MainGUI().setVisible(true);
             dispose();
         } else {
@@ -90,7 +90,7 @@ public class LoginGUI extends JFrame {
     }
 
     private void authenticateAdmin(String username, String password) {
-        if (CourseManagementSystem.authenticateUser(username, password, true)) {
+        if (UserManagementSystem.authenticateUser(username, password, true)) {
             new AdminGUI().setVisible(true);
             dispose();
         } else {
