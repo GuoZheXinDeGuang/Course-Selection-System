@@ -39,7 +39,6 @@ public class CourseManagementSystem  {
     public static void removeCourseFromCart(Course course) {
         cart.remove(course);
         saveCart();
-        JOptionPane.showMessageDialog(null, "Course removed from cart!");
     }
 
     public static boolean validateSchedule() {
@@ -115,6 +114,7 @@ public class CourseManagementSystem  {
         return loggedInUser;
     }
 
+    @SuppressWarnings("unchecked")
     private static void loadCourses() {
         ObjectInputStream ois = null;
         try {
@@ -137,6 +137,7 @@ public class CourseManagementSystem  {
         }
     }
 
+    @SuppressWarnings("unchecked")
     private static void loadCart() {
         if (loggedInUser instanceof Student) {
             ObjectInputStream ois = null;
