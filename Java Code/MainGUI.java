@@ -85,7 +85,7 @@ public class MainGUI extends JFrame {
     }
 
     private void btn_click_logout() {
-        CourseManagementSystem.logoutUser();
+        UserManagementSystem.logoutUser();
         new LoginGUI().setVisible(true);
         dispose();
     }
