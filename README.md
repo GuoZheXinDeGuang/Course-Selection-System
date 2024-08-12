@@ -17,7 +17,7 @@ To use this system, follow these steps:
    - Add all the `.java` files and `users.txt` to your Java compiler or IDE. `users.txt` contains the username and password of student and admin. 
 
 3. **Run the Application:**
-   - Compile and run the `LoginGUI.java` file to start the application.
+   - Compile and run the `Main.java` file to start the application.
 
 4. **User Authentication:**
    - The usernames and passwords are stored in `users.txt`. Use these credentials to log in as a student or an admin.
@@ -34,3 +34,6 @@ To use this system, follow these steps:
 - **Add Course:** Add new courses to the system.
 - **Update Course:** Update existing course information.
 - **Remove Course:** Remove courses from the system.
+
+## Replit Link
+- You can directly run the project using this link (please navigate to `src/main/java` to see the code): https://replit.com/@zl4701/CS470-Project-Course-Selection

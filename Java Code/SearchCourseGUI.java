@@ -14,7 +14,7 @@ public class SearchCourseGUI extends JFrame {
 
     public SearchCourseGUI() {
         setTitle("Search Courses");
-        setSize(400, 300); 
+        setSize(400, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -25,7 +25,6 @@ public class SearchCourseGUI extends JFrame {
         resultsList = new JList<Course>(listModel);
         resultsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        // Adjust the height of the display results area
         resultsList.setVisibleRowCount(4);
         JScrollPane scrollPane = new JScrollPane(resultsList);
         scrollPane.setPreferredSize(new Dimension(380, 80));

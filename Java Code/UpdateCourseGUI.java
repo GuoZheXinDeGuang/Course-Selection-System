@@ -145,7 +145,7 @@ public class UpdateCourseGUI extends JFrame {
         JOptionPane.showMessageDialog(this, "Course updated successfully!");
         dispose();
 
-                                    }
+        }
 
 }
 

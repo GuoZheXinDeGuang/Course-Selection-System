@@ -1,4 +1,6 @@
-public class Course {
+import java.io.Serializable;
+
+public class Course implements Serializable {
     private String courseName;
     private String courseTime;
     private String courseInstructor;
@@ -6,8 +8,10 @@ public class Course {
     private String prerequisites;
     private int credits;
     private double rating;
+    private String category;
 
-    public Course(String courseName, String courseTime, String courseInstructor, String courseDescription, String prerequisites, int credits, double rating) {
+    public Course(String courseName, String courseTime, String courseInstructor, String courseDescription,
+            String prerequisites, int credits, double rating, String category) {
         this.courseName = courseName;
         this.courseTime = courseTime;
         this.courseInstructor = courseInstructor;
@@ -15,14 +19,15 @@ public class Course {
         this.prerequisites = prerequisites;
         this.credits = credits;
         this.rating = rating;
+        this.category = category;
     }
 
     public String getCourseName() {
         return courseName;
     }
 
-    public void setCourseName(String courseNameString) {
-        this.courseName = courseNameString;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public String getCourseTime() {
@@ -73,8 +78,17 @@ public class Course {
         this.rating = rating;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
-        return courseName + " (" + courseInstructor + ")";
+        return courseName;
     }
 }
+

@@ -30,7 +30,6 @@ public class RemoveCourseGUI extends JFrame {
 
         add(panel);
 
-        // Load existing courses into the combo box
         List<Course> allCourses = CourseManagementSystem.getAllCourses();
         for (Course course : allCourses) {
             courseComboBox.addItem(course);
