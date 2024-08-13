@@ -78,10 +78,14 @@ public class SearchCourseGUI extends JFrame {
                 if (e.getClickCount() == 2) {
                     int index = resultsList.locationToIndex(e.getPoint());
                     Course selectedCourse = listModel.getElementAt(index);
-                    new CourseDetailsGUI(selectedCourse).setVisible(true);
+                    mouse_click_details(selectedCourse);
                 }
             }
         });
+    }
+
+    private void mouse_click_details(Course selectedCourse) {
+        new CourseDetailsGUI(selectedCourse).setVisible(true);
     }
 
     private void btn_click_performSearch(String query, String type) {
