@@ -99,19 +99,29 @@ public class UpdateCourseGUI extends JFrame {
 
         courseComboBox.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                loadCourseDetails();
+                Course selectedCourse = (Course) courseComboBox.getSelectedItem();
+                loadCourseDetails(selectedCourse);
             }
         });
 
         updateButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                updateCourseDetails();
+                Course selectedCourse = (Course) courseComboBox.getSelectedItem();
+                if (selectedCourse != null) {
+                    String name = courseNameField.getText();
+                    String time = courseTimeField.getText();
+                    String instructor = courseInstructorField.getText();
+                    String description = courseDescriptionField.getText();
+                    String prerequisites = coursePrerequisitesField.getText();
+                    int credits = ((Integer) courseCreditsSpinner.getValue()).intValue();
+                    String category = courseCategoryField.getText();
+                    btn_update_clk(selectedCourse, name, time, instructor, description, prerequisites, credits, category);
+                }
             }
         });
     }
 
-    private void loadCourseDetails() {
-        Course selectedCourse = (Course) courseComboBox.getSelectedItem();
+    private void loadCourseDetails(Course selectedCourse) {
         if (selectedCourse != null) {
             courseNameField.setText(selectedCourse.getCourseName());
             courseTimeField.setText(selectedCourse.getCourseTime());
@@ -123,29 +133,10 @@ public class UpdateCourseGUI extends JFrame {
         }
     }
 
-    private void updateCourseDetails() {
-        Course selectedCourse = (Course) courseComboBox.getSelectedItem();
-        if (selectedCourse != null) {
-            String name = courseNameField.getText();
-            String time = courseTimeField.getText();
-            String instructor = courseInstructorField.getText();
-            String description = courseDescriptionField.getText();
-            String prerequisites = coursePrerequisitesField.getText();
-            int credits = ((Integer) courseCreditsSpinner.getValue()).intValue();
-            String category = courseCategoryField.getText();
-
-            btn_update_clk(selectedCourse, name, time, instructor, description, prerequisites,
-                    credits, category);
-
-        }
-    }
     private void btn_update_clk(Course course, String name, String time, String instructor, String description,
-                                    String prerequisites, int credits, String category){
+            String prerequisites, int credits, String category) {
         CourseManagementSystem.updateCourse(course, name, time, instructor, description, prerequisites, credits, category);
         JOptionPane.showMessageDialog(this, "Course updated successfully!");
         dispose();
-
-        }
-
+    }
 }
-
